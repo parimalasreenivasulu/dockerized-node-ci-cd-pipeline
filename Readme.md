@@ -1,27 +1,40 @@
 # Containerized Node.js App with PostgreSQL & Redis
 
-A production-ready, multi-stage containerized Node.js application built with Express, PostgreSQL, and Redis, orchestrated using Docker Compose. Developed with a strong focus on security, lightweight footprints, and best practices.
+[![CI/CD Pipeline](https://github.com/parimalasreenivasulu/dockerized-node-ci-cd-pipeline/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/parimalasreenivasulu/dockerized-node-ci-cd-pipeline/actions)
 
-## 🚀 Tech Stack
-* **Runtime:** Node.js (Alpine Linux)
-* **Web Framework:** Express.js
-* **Database:** PostgreSQL (Alpine)
-* **Cache:** Redis (Alpine)
-* **Containerization:** Docker & Docker Compose (Multi-stage builds)
+An end-to-end DevOps project featuring a multi-container Node.js backend connected to PostgreSQL and Redis, fully containerized using Docker and deployed via an automated GitHub Actions CI/CD pipeline.
 
-## ✨ Key Features
-* **Multi-Stage Docker Build:** Separates build-time dependencies from the production runtime environment to drastically reduce image size.
-* **Security Hardened:** Runs under a dedicated non-root user (`nodejs`) instead of root to minimize potential container security vulnerabilities.
-* **Service Orchestration:** Automated startup sequence using Docker Compose with built-in health checks for the PostgreSQL database.
-* **Persistent Storage:** Configured with Docker volumes to ensure data persistence for both PostgreSQL and Redis.
+---
 
-## 🛠️ Prerequisites
-Make sure you have the following installed on your machine:
-* [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+## 🛠️ Tech Stack & Tools
 
-## 🏃‍♂️ How to Run Locally
+* **Backend:** Node.js, Express.js
+* **Databases:** PostgreSQL, Redis
+* **Containerization:** Docker, Docker Compose (Multi-stage build)
+* **CI/CD Pipeline:** GitHub Actions
+* **Version Control:** Git, GitHub
 
-1. Clone the repository:
-   ```bash
-   git clone [https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git](https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git)
-   cd YOUR-REPO-NAME
+---
+
+## 🚀 CI/CD Pipeline Workflow
+
+The GitHub Actions pipeline (`.github/workflows/ci-cd.yml`) automates quality control and build verification on every push or pull request to the `main` branch:
+
+1. **Linting:** Runs code quality checks (`npm run lint`).
+2. **Testing:** Executes automated unit tests (`npm test`).
+3. **Docker Build:** Builds multi-stage Docker images with build cache optimizations (`docker/build-push-action`).
+
+---
+
+## 📂 Project Structure
+
+```text
+dockerized-node-ci-cd-pipeline/
+├── .github/
+│   └── workflows/
+│       └── ci-cd.yml       # GitHub Actions pipeline workflow
+├── Dockerfile              # Multi-stage Docker build configuration
+├── docker-compose.yml      # Multi-container orchestration (Node, Postgres, Redis)
+├── server.js               # Node.js application entry point
+├── package.json            # Dependencies and scripts
+└── README.md               # Project documentation
